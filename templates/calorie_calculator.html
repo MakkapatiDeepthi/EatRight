@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}Calorie Calculator - EatRight{% endblock %}
+
+{% block content %}
+<section class="container">
+    <h2>Calorie Calculator</h2>
+    <p>Enter your details below to calculate your daily calorie needs.</p>
+
+    <form method="POST" action="{{ url_for('calorie_calculator') }}" class="form-container">
+        <label for="weight">Weight (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+
+        <label for="height">Height (cm):</label>
+        <input type="number" id="height" name="height" required>
+
+        <label for="age">Age (years):</label>
+        <input type="number" id="age" name="age" required>
+
+        <label for="activity">Activity Level:</label>
+        <select id="activity" name="activity">
+            <option value="sedentary">Sedentary</option>
+            <option value="light">Light Activity</option>
+            <option value="moderate">Moderate Activity</option>
+            <option value="intense">Intense Activity</option>
+        </select>
+
+        <button type="submit">Calculate Calories</button>
+    </form>
+
+    {% if calories %}
+    <div class="result-container">
+        <h3>Your Daily Calorie Needs:</h3>
+        <p><strong>{{ calories }}</strong> kcal</p>
+    </div>
+    {% endif %}
+</section>
+{% endblock %}

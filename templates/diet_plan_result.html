@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}Diet Plan Result{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Your Diet Plan</h2>
+
+    {% for meal, meal_data in meal_plan.items() %}
+        <h3>{{ meal }}</h3>
+        {% if meal_data['items'] %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Food Option</th>
+                        <th>Calories</th>
+                        <th>Proteins (g)</th>
+                        <th>Carbs (g)</th>
+                        <th>Fats (g)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for food in meal_data['items'] %}
+                        <tr>
+                            <td>{{ food.name }}</td>
+                            <td>{{ food.calories }}</td>
+                            <td>{{ food.proteins }}</td>
+                            <td>{{ food.carbs }}</td>
+                            <td>{{ food.fats }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <p><strong>Total Calories for {{ meal }}:</strong> {{ meal_data.total_calories }}</p>
+        {% else %}
+            <p>{{ meal_data.message }}</p>
+        {% endif %}
+        <br>
+    {% endfor %}
+</div>
+{% endblock %}

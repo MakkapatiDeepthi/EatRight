@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Diet Planner</h2>
+    <p>Enter your calorie intake to get a personalized diet plan.</p>
+
+    <form method="POST" action="{{ url_for('diet_planner') }}">
+        <label for="calories">Calories to Consume:</label>
+        <input type="number" id="calories" name="calories" required>
+
+        <label>Diet Type:</label><br>
+        <input type="radio" name="diet_type" value="Veg" id="veg" required>
+        <label for="veg">Vegetarian</label><br>
+        <input type="radio" name="diet_type" value="Non-Veg" id="nonveg">
+        <label for="nonveg">Non-Vegetarian</label><br><br>
+
+        <button type="submit">Get Diet Plan</button>
+    </form>
+
+    {% if meal_plan %}
+        <div class="result-box">
+            <h2>Your Diet Plan</h2>
+
+            {% for meal, meal_data in meal_plan.items() %}
+                <h3>{{ meal }}</h3>
+
+                {% if meal_data.items|length > 0 %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Food Option</th>
+                                <th>Calories</th>
+                                <th>Proteins (g)</th>
+                                <th>Carbs (g)</th>
+                                <th>Fats (g)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for food in meal_data.items %}
+                                <tr>
+                                    <td>{{ food.name }}</td>
+                                    <td>{{ food.calories }}</td>
+                                    <td>{{ food.proteins }}</td>
+                                    <td>{{ food.carbs }}</td>
+                                    <td>{{ food.fats }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <p>Total Calories for {{ meal }}: {{ meal_data.total_calories }}</p>
+                {% else %}
+                    <p>{{ meal_data.message }}</p>
+                {% endif %}
+
+                <br>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

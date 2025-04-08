@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Welcome, {{ user.username }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Mobile:</strong> {{ user.mobile }}</p>
+
+    <hr>
+    <h3>Your Diet Plan History</h3>
+
+    {% if diet_history %}
+        {% for entry in diet_history %}
+            <p><strong>Date & Time:</strong> {{ entry.timestamp }}</p>
+
+            {% if entry.meal_plan %}
+                {% for meal, items in entry.meal_plan.items() %}
+                    <p><strong>{{ meal }}:</strong></p>
+                    <ul>
+                        {% for item in items %}
+                            <li>{{ item.name }} - {{ item.calories }} calories</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% else %}
+                <p><em>No meal plan data available in this entry.</em></p>
+            {% endif %}
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No diet history found.</p>
+    {% endif %}
+</div>
+{% endblock %}

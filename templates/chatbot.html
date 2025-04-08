@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}
+    EatRight - Chatbot
+{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <h2>Chat with EatRight Bot</h2>
+
+    <!-- Chat messages will appear here -->
+    <div class="chat-box" id="chat-box"></div>
+
+    <form id="chat-form">
+        <input 
+            type="text" 
+            id="user-input" 
+            placeholder="Type your query..." 
+            autocomplete="off" 
+            aria-label="Chat input"
+            required
+        >
+        <button type="submit" id="send-btn" aria-label="Send Message">Send</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}

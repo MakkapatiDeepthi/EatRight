@@ -1,0 +1,42 @@
+{
+  "Breakfast": {
+    "Veg": [
+      {"name": "Oatmeal", "calories": 350, "proteins": 8, "fats": 5, "carbs": 60},
+      {"name": "Pancakes", "calories": 400, "proteins": 10, "fats": 12, "carbs": 65}
+    ],
+    "Non-Veg": [
+      {"name": "Eggs", "calories": 150, "proteins": 12, "fats": 10, "carbs": 2},
+      {"name": "Bacon", "calories": 200, "proteins": 15, "fats": 15, "carbs": 5}
+    ]
+  },
+  "Lunch": {
+    "Veg": [
+      {"name": "Salad", "calories": 200, "proteins": 10, "fats": 5, "carbs": 30},
+      {"name": "Vegetable Curry", "calories": 300, "proteins": 12, "fats": 8, "carbs": 45}
+    ],
+    "Non-Veg": [
+      {"name": "Chicken Salad", "calories": 250, "proteins": 20, "fats": 10, "carbs": 10},
+      {"name": "Fish", "calories": 350, "proteins": 25, "fats": 15, "carbs": 0}
+    ]
+  },
+  "Dinner": {
+    "Veg": [
+      {"name": "Lentil Soup", "calories": 250, "proteins": 15, "fats": 3, "carbs": 40},
+      {"name": "Vegetable Stir-fry", "calories": 350, "proteins": 10, "fats": 10, "carbs": 50}
+    ],
+    "Non-Veg": [
+      {"name": "Steak", "calories": 400, "proteins": 30, "fats": 20, "carbs": 0},
+      {"name": "Salmon", "calories": 300, "proteins": 25, "fats": 18, "carbs": 0}
+    ]
+  },
+  "Snacks": {
+    "Veg": [
+      {"name": "Apple", "calories": 95, "proteins": 1, "fats": 0, "carbs": 25},
+      {"name": "Nuts", "calories": 150, "proteins": 5, "fats": 12, "carbs": 8}
+    ],
+    "Non-Veg": [
+      {"name": "Jerky", "calories": 100, "proteins": 15, "fats": 3, "carbs": 2},
+      {"name": "Yogurt", "calories": 120, "proteins": 12, "fats": 5, "carbs": 10}
+    ]
+  }
+}
