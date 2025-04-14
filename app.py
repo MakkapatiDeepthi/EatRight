@@ -56,11 +56,10 @@ def save_users(users):
         json.dump(users, f, indent=4)
 
 
-
-
 @app.route('/')
 def home():
     return render_template('home.html')
+
 
 @app.route('/profile')
 def profile():
@@ -90,7 +89,7 @@ def login():
             if identifier in [user['email'], user['username'], user['mobile']] and user['password'] == password:
                 session['user'] = user
                 flash('Login successful!', 'success')
-                return redirect(url_for('dashboard'))
+                return redirect(url_for('home'))
 
         flash('Invalid login credentials.', 'danger')
         return redirect(url_for('login'))
@@ -126,11 +125,7 @@ def register():
     return render_template('register.html')
 
 
-@app.route('/dashboard')
-def dashboard():
-    if 'user' not in session:
-        return redirect(url_for('login'))
-    return render_template('dashboard.html', username=session['user']['username'])
+
 
 
 @app.route('/logout')
@@ -143,14 +138,13 @@ def logout():
 @app.route('/calorie-calculator', methods=['GET', 'POST'])
 def calorie_calculator():
     if request.method == 'POST':
-        try:  # Add a try-except block for potential errors
+        try:
             weight = float(request.form['weight'])
             height = float(request.form['height'])
             age = int(request.form['age'])
             activity = request.form['activity']
 
             bmr = 10 * weight + 6.25 * height - 5 * age + 5
-
             activity_multipliers = {
                 'sedentary': 1.2,
                 'light': 1.375,
@@ -159,13 +153,27 @@ def calorie_calculator():
             }
             calories = bmr * activity_multipliers.get(activity, 1.2)
 
-            return render_template('calorie_result.html', calories=round(calories, 2))
+            # Store result in session
+            session['calorie_result'] = round(calories, 2)
+
+            # Redirect to avoid form re-submission
+            return redirect(url_for('calorie_result'))
+
         except ValueError:
             return render_template('calorie_calculator.html', error="Invalid input. Please enter numbers.")
-        except Exception as e:  # Catch other potential errors
+        except Exception as e:
             return render_template('calorie_calculator.html', error=f"An error occurred: {e}")
 
     return render_template('calorie_calculator.html')
+
+
+@app.route('/calorie-result')
+def calorie_result():
+    calories = session.get('calorie_result')
+    if calories is not None:
+        return render_template('calorie_result.html', calories=calories)
+    return redirect(url_for('calorie_calculator'))
+
 
 
 @app.route('/diet_planner', methods=['GET', 'POST'])
