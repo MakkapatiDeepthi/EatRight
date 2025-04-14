@@ -142,9 +142,14 @@ def calorie_calculator():
             weight = float(request.form['weight'])
             height = float(request.form['height'])
             age = int(request.form['age'])
+            gender= request.form['gender']
             activity = request.form['activity']
 
-            bmr = 10 * weight + 6.25 * height - 5 * age + 5
+            if gender == 'male':
+                bmr = 10 * weight + 6.25 * height - 5 * age + 5
+            else:  # assuming 'female'
+                bmr = 10 * weight + 6.25 * height - 5 * age - 161
+
             activity_multipliers = {
                 'sedentary': 1.2,
                 'light': 1.375,
