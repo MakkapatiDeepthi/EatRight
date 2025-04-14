@@ -46,7 +46,7 @@ pip install -r requirements.txt
 3. Run the app
 python app.py
 
-4. Open your browser at http://127.0.0.0.5001
+4. Open your browser at http://127.0.0.1.5001
 
 
 📁 Project Structure
