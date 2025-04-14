@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calorie Result</title>
-    <link rel="stylesheet" href="/static/css/styles.css">
-</head>
-<body>
+<!-- templates/calorie_result.html -->
+{% extends "base.html" %}
+
+{% block title %}Calorie Result{% endblock %}
+
+{% block content %}
     <h2>Your Recommended Daily Caloric Intake</h2>
     <p>Your recommended daily calorie intake is {{ calories }} calories.</p>
-    <a href="/calorie_calculator">Back to Calorie Calculator</a>
-</body>
-</html>
+    <a href="{{ url_for('calorie_calculator') }}">Back to Calorie Calculator</a> |
+    <a href="{{ url_for('diet_planner') }}">Diet Planner</a>
+{% endblock %}
