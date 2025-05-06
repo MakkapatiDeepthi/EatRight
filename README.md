@@ -66,8 +66,8 @@ EatRight/
 
 
 👩‍💻 Developed By
-Makkapati Deepthi
-Popuri Sruthi
+Makkapati Deepthi,
+Popuri Sruthi,
 Gunukula Lakshmi Pravallika
 
 🌟 Future Improvements
