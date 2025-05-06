@@ -49,6 +49,10 @@ python app.py
 4. Open your browser at http://127.0.0.1.5001
 
 
+## Deployment Link
+https://eatright-oern.onrender.com
+
+
 📁 Project Structure
 
 EatRight/
@@ -63,8 +67,8 @@ EatRight/
 
 👩‍💻 Developed By
 Makkapati Deepthi
-Email: deepthimakkapati@gmail.com
-GitHub: MakkapatiDeepthi
+Popuri Sruthi
+Gunukula Lakshmi Pravallika
 
 🌟 Future Improvements
 Add database integration (MongoDB or SQLite)
