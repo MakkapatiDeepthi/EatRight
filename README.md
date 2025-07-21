@@ -66,9 +66,7 @@ EatRight/
 
 
 👩‍💻 Developed By
-Makkapati Deepthi,
-Popuri Sruthi,
-Gunukula Lakshmi Pravallika
+Makkapati Deepthi
 
 🌟 Future Improvements
 Add database integration (MongoDB or SQLite)
